@@ -99,7 +99,7 @@ index a89bb53..a09967b 100644
 +
 +# the RPATH to be used when installing---------------------------------------------------------
 +if(rpath)
-+  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
++  set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_FULL_LIBDIR}")
 +  set(CMAKE_BUILD_WITH_INSTALL_RPATH TRUE)
 +endif()
 +
