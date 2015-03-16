@@ -10,6 +10,8 @@ class Qt5Base < Formula
   depends_on :xcode => :build
   depends_on "pkg-config" => :build
 
+  option :cxx11
+
   def install
     args = ["-prefix", prefix,
             "-opensource",
@@ -18,10 +20,18 @@ class Qt5Base < Formula
             "-nomake", "tests",
             "-nomake", "examples"]
 
+    if build.cxx11?
+      args << "-c++11"
+    else
+      args << "-no-c++11"
+    end
+
+    args << "-qt-xcb" if OS.linux?
+
     system "./configure", *args
     # Cannot parellize build os OSX
     system "make"
-    ENV.j1
+    ENV.j1 if OS.mac?
     system "make", "install"
   end
 
