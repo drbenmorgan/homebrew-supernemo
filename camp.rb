@@ -1,9 +1,7 @@
 class Camp < Formula
   homepage "https://github.com/tegesoft/camp"
-  url "https://github.com/tegesoft/camp.git", :tag => "0.8.0"
+  url "https://github.com/drbenmorgan/camp.git", :branch => "cmake-support"
   version "0.8.0"
-
-  patch :DATA
 
   option "with-doc", "Build with doxygen documentation"
   option :cxx11
@@ -21,6 +19,7 @@ class Camp < Formula
     ENV.cxx11 if build.cxx11?
     system "cmake", ".", *std_cmake_args
     system "make"
+    system "make doc" if build.with? "doc"
     system "make", "install"
   end
 
@@ -29,16 +28,3 @@ class Camp < Formula
   end
 end
 
-__END__
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f11ce20..65f73d8 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -205,7 +205,7 @@ install(TARGETS camp
-     ARCHIVE DESTINATION lib COMPONENT devel
- )
- 
--install(FILES README.txt COPYING.txt LICENSE.LGPL3.txt
-+install(FILES README.txt COPYING.txt
-     DESTINATION ${INSTALL_MISC_DIR}
- )
