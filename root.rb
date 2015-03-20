@@ -12,7 +12,7 @@ class Root < Formula
    depends_on "gsl" => :recommended
 
    option :cxx11
-   depends_on "python" => :optional
+   depends_on :python => :optional
 
 
    def install
