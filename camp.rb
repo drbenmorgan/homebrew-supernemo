@@ -1,6 +1,6 @@
 class Camp < Formula
   homepage "https://github.com/tegesoft/camp"
-  url "https://github.com/drbenmorgan/camp.git", :branch => "cmake-support"
+  url "https://github.com/drbenmorgan/camp.git", :revision => "7564e57f7b406d1021290cf2260334d57d8df255"
   version "0.8.0"
 
   option "with-doc", "Build with doxygen documentation"
