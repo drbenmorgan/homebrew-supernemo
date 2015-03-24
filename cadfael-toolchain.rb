@@ -4,9 +4,11 @@ class CadfaelToolchain < Formula
 
   if OS.linux?
     depends_on "pkg-config"
-    depends_on "gcc"
+    depends_on "gcc" => "without-fortran"
     depends_on "patchelf"
     depends_on "binutils"
+    # Need an explicit python dependency - ':python' will ger built
+    # before gcc, and ideally we want it built with the same compiler.
     depends_on "python"
   end
 
